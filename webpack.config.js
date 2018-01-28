@@ -7,7 +7,7 @@ const BUILD_DIR = path.resolve(__dirname, 'public');
 const APP_DIR = path.resolve(__dirname, 'src');
 
 const config = {
-	entry: APP_DIR + '/components/index.jsx',
+	entry: APP_DIR + '/index.jsx',
 	output: {
     path: BUILD_DIR,
 		filename: 'bundle.js'
@@ -20,11 +20,30 @@ const config = {
       {
         test : /\.jsx?/,
         include : APP_DIR,
-        loader: "babel-loader"
+        loader: 'babel-loader'
       },
       {
         test: /\.css$/,
-        loaders: ["style-loader", "css-loader"]
+        use: [
+          require.resolve('style-loader'),
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              importLoaders: 1,
+              modules:true,
+              localIdentName: '[name]__[local]__[hash:base64:5]'
+            },
+          },
+          {
+            loader: require.resolve('postcss-loader'),
+            options: {
+              ident: 'postcss',
+              plugins: () => [
+                require('postcss-flexbugs-fixes')
+              ],
+            },
+          },
+        ],
       }
     ]
   },

@@ -1,0 +1,10 @@
+.Categories{
+  line-height: 40px;
+  cursor: pointer;
+  font-size: 20px;
+  border: 2px solid gray;
+  padding: 0 10px;
+}
+.Categories:hover{
+  background-color: goldenrod;
+}
