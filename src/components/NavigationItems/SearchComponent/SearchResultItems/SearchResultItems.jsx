@@ -4,9 +4,11 @@ import SearchResultItem from './SearchResultItem/SearchResultItem';
 
 const searchResultItems=(props)=>(
   <div className={classes.SearchResultItems}>
-    <SearchResultItem >asdasffaasf</SearchResultItem>   
-    <SearchResultItem >asdasffaasf</SearchResultItem>  
-    <SearchResultItem >asdasffaasf</SearchResultItem>   
+   {props.searchResult.map((item)=>{
+     return (
+       <SearchResultItem>{item}</SearchResultItem>
+     );
+   })}   
   </div>
 );
 export default searchResultItems;
